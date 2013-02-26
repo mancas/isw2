@@ -1,0 +1,10 @@
+S02
+
+	Task 1
+		-Definir "Modelo" Componente (Code, Name, Version, Description, License)
+		-Definir "Modelo" Acme's Customer (Code, Name)
+		-Definir "Modelo" ComponentCustomer (Serial Number, Customer Name, Customer Company Name)
+
+		-Definir "Modelo" Article (Code, Name)
+		-Definir "Modelo" ComponentsArticles (ComponentCustomer Serial Number, Article Code)
+		-Definir "Modelo" ArticleComment (Article Code, Customer Code, Comment)
