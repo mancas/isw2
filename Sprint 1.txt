@@ -1,10 +1,30 @@
 S02
 
 	Task 1
-		-Definir "Modelo" Componente (Code, Name, Version, Description, License)
-		-Definir "Modelo" Acme's Customer (Code, Name)
-		-Definir "Modelo" ComponentCustomer (Serial Number, Customer Name, Customer Company Name)
+		-Definir "Modelo1" Componente (Code, Name, Version, Description, License)
+		-Definir "Modelo1" Acme's Customer (Code, Name)
+		-Definir "Modelo1" ComponentCustomer (Serial Number, Customer Name, Customer Company Name)
 
-		-Definir "Modelo" Article (Code, Name)
-		-Definir "Modelo" ComponentsArticles (ComponentCustomer Serial Number, Article Code)
-		-Definir "Modelo" ArticleComment (Article Code, Customer Code, Comment)
+		-Definir "Modelo1" Article (Code, Name)
+		-Definir "Modelo1" ComponentsArticles (ComponentCustomer Serial Number, Article Code)
+		-Definir "Modelo1" ArticleComment (Article Code, Customer Code, Comment)
+
+
+	
+	Task 2
+
+		- Definir "Modelo2" Product (serial_number, name)
+		- Definir "Modelo2" Family (id_family, id_procedure)
+		- Definir "Modelo2" CustomerIncidence (id_incidence,
+							customer_code,
+							product_serial_number,
+							id_family,
+							id_procedure,
+							id_previous_incidence)
+		
+		- Definir "Modelo2" Person (dni, name, surname, age)
+		- Definir "Modelo2" Acme's Specialist (dni, id_family, id_procedure, id_incidence)
+		- Definir "Modelo2" Acme's Customer (Code, Name)
+
+
+	
