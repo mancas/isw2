@@ -23,8 +23,10 @@ S02
 							id_previous_incidence)
 		
 		- Definir "Modelo2" Person (dni, name, surname, age)
-		- Definir "Modelo2" Acme's Specialist (dni, id_family, id_procedure, id_incidence)
+		- Definir "Modelo2" Acme's Specialist (dni, id_family, id_procedure, id_incidence) Padre
+		- Definir "Modelo2" Acme's Technicians(dni) Hijo
 		- Definir "Modelo2" Acme's Customer (Code, Name)
+		- Definir "Modelo2" IncidenceTechnician (id_incidence, dni_technician)
 
 
 	
