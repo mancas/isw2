@@ -30,3 +30,22 @@ S02
 
 
 	
+	Task 3 (Modelo 3)
+		- Definir Person (name, phone, number, address, email)
+		- Definir Customer (id_customer)
+		- Definir Employee (id_employee, id_category,
+					insurance_number)
+		- Definir Category (id_category, name)
+		
+		- Definir Pet (name, race, id_vr, id_customer)
+		- Definir VR (id_vr, id_vet, id_nurse, id_assistant,
+				date,
+				symptoms,
+				remarks)
+		
+		* Employee, Customer subtype_of Person
+		* Categories: vets, nurses, assistants
+
+		
+
+
