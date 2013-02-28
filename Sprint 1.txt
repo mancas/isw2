@@ -26,7 +26,7 @@ S02
 		- Definir "Modelo2" Acme's Specialist (dni, id_family, id_procedure, id_incidence) Padre
 		- Definir "Modelo2" Acme's Technicians(dni) Hijo
 		- Definir "Modelo2" Acme's Customer (Code, Name)
-		- Definir "Modelo2" IncidenceTechnician (id_incidence, dni_technician)
+		- Definir "Modelo2" TechnicianIncidence (id_incidence, dni_technician)
 
 
 	
