@@ -24,19 +24,10 @@ public class ExamPaper extends DomainEntity{
 	
 	// getters
 	
-	// getMark(): sum of all the answers
-	
-	@Min(0) 
+	@Min(0)
 	public Double getMark()
 	{
-		Double sum = 0;
-		Integer i;
-
-		for (i = 0; i < this.answers.size(); i++){
-			sum += this.answers.get(i).getMark();
-		}
-
-		return sum;
+		return this.mark;
 	}
 	
 	@Range(min = 1, max = 99)
@@ -60,7 +51,7 @@ public class ExamPaper extends DomainEntity{
 	public void setScore(Integer score)
 	{
 		if(score >= 1 || score <= 99){
-			this.mark = mark;
+			this.score = score;
 		}
 		else{
 			System.out.println("Class ExamPaper: Score out of valid range.");
