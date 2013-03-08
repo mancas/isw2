@@ -1,32 +1,37 @@
 package domain;
 
-import java.util.Calendar;
-import java.util.Date;
-
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.Entity;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Past;
 
 
+import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.util.Assert;
+
+@Entity
+@Access(AccessType.PROPERTY)
 public class Payment extends DomainEntity{
 
-	private Date moment;
+	private String method;
 	private Money amount;
 	
 	
 	public Payment()
 	{
-		this.moment = Calendar.getInstance().getTime();
+		super();
+		this.method = "payment method";
 		this.amount = new Money();
 	}
 	
 	// getters
 	
 	@NotNull
-	@Past
-	public Date getMoment()
+	@NotBlank
+	public String getMethod()
 	{
-		return this.moment;
+		return this.method;
 	}
 	
 	@NotNull
@@ -38,14 +43,10 @@ public class Payment extends DomainEntity{
 	
 	// setters
 	
-	public void setMoment(Date moment)
+	public void setMethod(String method)
 	{
-		if(moment != null){
-			this.moment = moment;
-		}
-		else{
-			System.out.println("Class Payment: cannot set a null moment.");
-		}
+		Assert.notNull(method);
+		this.method = method;
 	}
 	
 	/*TODO: implement restriction Payment-Certification
@@ -54,11 +55,7 @@ public class Payment extends DomainEntity{
 	 */
 	public void setAmount(Money amount)
 	{
-		if (amount != null){
-			this.amount = amount;
-		}
-		else{
-			System.out.println("Class Payment: cannot set a null amount.");
-		}
+		Assert.notNull(amount);
+		this.amount = amount;
 	}
 }

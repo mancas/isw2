@@ -1,8 +1,17 @@
 package domain;
 
+
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.Entity;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
+import org.springframework.util.Assert;
+
+
+@Entity
+@Access(AccessType.PROPERTY)
 public class Answer extends DomainEntity{
 
 	private int number;
@@ -10,12 +19,14 @@ public class Answer extends DomainEntity{
 	
 	public Answer()
 	{
+		super();
 		this.number = 0;
 		this.mark = 0.0;
 	}
 	
 	// getters
 	
+	@Min(0)
 	@NotNull
 	public int getNumber()
 	{
@@ -32,22 +43,14 @@ public class Answer extends DomainEntity{
 	
 	public void setNumber(int number)
 	{
-		if(number >= 0){
-			this.number = number;
-		}
-		else{
-			System.out.println("Class Answer: cannot set a negative 'answer' number");
-		}
+		Assert.notNull(number);
+		this.number = number;
 	}
 	
 	public void setMark(Double mark)
 	{
-		if(mark >= 0.0){
-			this.mark = mark;
-		}
-		else{
-			System.out.println("Class Answer: Cannot set a negative mark");
-		}
+		Assert.notNull(mark);
+		this.mark = mark;
 	}
 	
 }
