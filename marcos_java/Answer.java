@@ -1,17 +1,13 @@
 package domain;
 
 
-import javax.persistence.Access;
-import javax.persistence.AccessType;
-import javax.persistence.Entity;
+
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
 import org.springframework.util.Assert;
 
 
-@Entity
-@Access(AccessType.PROPERTY)
 public class Answer extends DomainEntity{
 
 	private int number;
@@ -20,6 +16,8 @@ public class Answer extends DomainEntity{
 	public Answer()
 	{
 		super();
+		this.number = 0;
+		this.mark = 0.0;
 	}
 	
 	// getters

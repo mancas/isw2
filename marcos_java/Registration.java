@@ -3,31 +3,37 @@ package domain;
 import java.util.Calendar;
 import java.util.Date;
 
-import javax.persistence.Access;
-import javax.persistence.AccessType;
-import javax.persistence.Entity;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 
 import org.springframework.util.Assert;
 
-
-
-@Access(AccessType.PROPERTY)
 public class Registration extends DomainEntity{
 	
 	private Date moment;
-	private ExamPaper examPaper;
+	
+	private ExamPaper exam_paper;
 	private Payment payment;
+	
+	
+	// ================ COPY ================
+	private Announcement announcement;
+	// ======================================
+	
 	
 	public Registration()
 	{
 		super();
 		this.moment = Calendar.getInstance().getTime();
+		this.exam_paper = new ExamPaper();
+		this.payment = new Payment();
+		
+		
+		// ================ COPY ================
+		this.announcement = new Announcement();
+		// ======================================
 	}
 	
 	// getters
@@ -41,7 +47,7 @@ public class Registration extends DomainEntity{
 	
 	@Valid
 	public ExamPaper getExamPaper(){
-		return this.examPaper;
+		return this.exam_paper;
 	}
 	
 	@Valid
@@ -58,10 +64,10 @@ public class Registration extends DomainEntity{
 		this.moment = moment;
 	}
 	
-	public void setExamPaper(ExamPaper examPaper)
+	public void setExamPaper(ExamPaper exam_paper)
 	{
-		Assert.notNull(examPaper);
-		this.examPaper = examPaper;
+		Assert.notNull(exam_paper);
+		this.exam_paper = exam_paper;
 	}
 	
 	public void setPayment(Payment payment)
@@ -69,4 +75,32 @@ public class Registration extends DomainEntity{
 		Assert.notNull(payment);
 		this.payment = payment;
 	}
+	
+	
+	// ================ COPY ================
+
+	@NotNull
+	@Valid
+	public Announcement getAnnouncement()
+	{
+		return this.announcement;
+	}
+	
+	public void addAnnouncement(Announcement ann)
+	{
+		Assert.notNull(ann);
+		this.announcement = ann;
+		ann.addRegistration(this);
+	
+	}
+	
+	public void removeAnnouncement(Announcement ann)
+	{
+		Assert.notNull(ann);
+
+		ann.removeRegistration(this);
+	
+	}
+	// ======================================
+	
 }

@@ -1,8 +1,6 @@
 package domain;
 
-import javax.persistence.Access;
-import javax.persistence.AccessType;
-import javax.persistence.Entity;
+
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
@@ -10,8 +8,6 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.util.Assert;
 
-@Entity
-@Access(AccessType.PROPERTY)
 public class Payment extends DomainEntity{
 
 	private String method;
@@ -21,6 +17,8 @@ public class Payment extends DomainEntity{
 	public Payment()
 	{
 		super();
+		this.method = "payment method";
+		this.amount = new Money();
 	}
 	
 	// getters
