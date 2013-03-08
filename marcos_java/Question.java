@@ -2,17 +2,12 @@ package domain;
 
 import java.util.HashSet;
 
-import javax.persistence.Access;
-import javax.persistence.AccessType;
-import javax.persistence.Entity;
 import javax.validation.constraints.Min;
 
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.util.Assert;
 
 
-@Entity
-@Access(AccessType.PROPERTY)
 public abstract class Question extends DomainEntity {
 	
 	private Integer number;

@@ -2,15 +2,10 @@ package domain;
 
 import java.util.ArrayList;
 
-import javax.persistence.Access;
-import javax.persistence.AccessType;
-import javax.persistence.Entity;
 
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.util.Assert;
 
-@Entity
-@Access(AccessType.PROPERTY)
 public class TestQuestion extends Question {
 
 	private ArrayList<String> answers;

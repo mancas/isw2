@@ -3,19 +3,12 @@ package domain;
 import java.util.Collection;
 import java.util.HashSet;
 
-import javax.persistence.Access;
-import javax.persistence.AccessType;
-import javax.persistence.Entity;
-import javax.persistence.JoinTable;
-import javax.persistence.OneToMany;
 import javax.validation.constraints.Min;
 
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.util.Assert;
 
 
-@Entity
-@Access(AccessType.PROPERTY)
 public class Company extends DomainEntity {
 
 	private String name;

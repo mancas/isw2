@@ -1,8 +1,5 @@
 package domain;
 
-import javax.persistence.Access;
-import javax.persistence.AccessType;
-import javax.persistence.Entity;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Email;
@@ -12,8 +9,6 @@ import org.springframework.util.Assert;
 import security.UserAccount;
 
 @SuppressWarnings("serial")
-@Entity
-@Access(AccessType.PROPERTY)
 public abstract class Actor extends UserAccount {
 	
 	private String name;
