@@ -15,16 +15,15 @@ public class ExamPaper extends DomainEntity{
 	private Double mark;
 	private Integer score; 
 	
-	public List<Answer> answers;
-	
+	private List<Answer> answers;
+	private Registration registration;
 	
 	public ExamPaper()
 	{
 		super();
 		this.answers = new ArrayList<Answer>();
+		this.registration = new Registration();
 	}
-	
-	
 	
 	private Double computeSum(List<Answer> answers)
 	{
@@ -57,6 +56,12 @@ public class ExamPaper extends DomainEntity{
 	{
 		return this.answers;
 	}
+
+	@Valid
+	public Registration getRegistration()
+	{
+		return this.registration;
+	}
 	
 	
 	// setters and modifiers
@@ -79,13 +84,41 @@ public class ExamPaper extends DomainEntity{
 	
 	public void addAnswer(Answer answer)
 	{
-		this.answers.add(answer);
+		Integer i;
+
+		Registration reg = this.getRegistration();
+		Exam exam_reg = reg.getAnnouncement().getExam();
+
+		// get associated question 
+		Integer num = answer.getNumber();
+		Collection<Question> qs = exam_reg.getQuestions();
+		TestQuestion question = null;
+
+		for(Question q: qs){
+			if(q.getNumber() == num){
+				if(q instanceof TestQuestion){
+					question = q;
+					break;
+				}
+			}
+		}
+
+		// is in range ?
+		if (question.getAnswers().size() >= num)
+		{
+			this.answer.add(answer);
+		}
+
 	}
-	
+
+
 	public void removeAnswer(Answer answer)
 	{
 		this.answers.remove(answer);
 	}
 	
-	
-}
+
+	public void setRegistration(Registration reg)
+	{
+		this.registration = reg;
+	}
