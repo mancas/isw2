@@ -20,8 +20,6 @@ public class Answer extends DomainEntity{
 	public Answer()
 	{
 		super();
-		this.number = 0;
-		this.mark = 0.0;
 	}
 	
 	// getters

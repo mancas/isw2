@@ -1,11 +1,18 @@
 package domain;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.Min;
 
@@ -17,22 +24,21 @@ import org.springframework.util.Assert;
 public class ExamPaper extends DomainEntity{
 	
 	private Double mark;
-	private Integer score; 
-	
-	public List<Answer> answers;
+	private Integer score;
+	private Collection<Registration> registers;
+	private Collection<Answer> answers;
 	
 	
 	public ExamPaper()
 	{
 		super();
-		this.mark = 0.0;
-		this.score = 0;
 		this.answers = new ArrayList<Answer>();
+		this.registers = new HashSet<Registration>();
 	}
 	
 	
 	
-	private Double computeSum(List<Answer> answers)
+	private Double computeSum(ArrayList<Answer> answers)
 	{
 		Double sum = 0.0;
 		Integer i;
@@ -42,13 +48,11 @@ public class ExamPaper extends DomainEntity{
 		}
 		return sum;
 	}
-	
-	// getters
-	
+
 	@Min(0)
 	public Double getMark()
 	{
-		return computeSum(this.answers);
+		return computeSum((ArrayList<Answer>) this.answers);
 	}
 	
 	@Range(min = 1, max = 99)
@@ -57,16 +61,7 @@ public class ExamPaper extends DomainEntity{
 		return this.score;
 	}
 	
-	@Valid
-	public List<Answer> getAnswers()
-	{
-		return this.answers;
-	}
-	
-	
-	// setters and modifiers
-	
-	public void setMark(List<Answer> answers)
+	public void setMark(ArrayList<Answer> answers)
 	{
 		Assert.notNull(answers);
 		this.mark = computeSum(answers);
@@ -83,6 +78,17 @@ public class ExamPaper extends DomainEntity{
 		}
 	}
 	
+	@Valid
+	public Collection<Answer> getAnswers()
+	{
+		return this.answers;
+	}
+	
+	public void setAnswers(ArrayList<Answer> answers) {
+		Assert.notNull(answers);
+		this.answers = answers;
+	}
+
 	public void addAnswer(Answer answer)
 	{
 		Assert.notNull(answer);
@@ -94,6 +100,14 @@ public class ExamPaper extends DomainEntity{
 		Assert.notNull(answer);
 		this.answers.remove(answer);
 	}
-	
-	
+
+	public Collection<Registration> getRegisters() {
+		return registers;
+	}
+
+	public void setRegisters(HashSet<Registration> registers) {
+		Assert.notNull(registers);
+		this.registers = registers;
+	}
+
 }

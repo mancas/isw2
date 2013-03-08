@@ -3,6 +3,11 @@ package domain;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.util.Assert;
 
 
 @Entity
@@ -14,9 +19,9 @@ public class OpenAnswer extends Answer{
 	public OpenAnswer()
 	{
 		super();
-		this.answer = "answer";
 	}
 	
+	@NotBlank
 	public String getOpenAnswer()
 	{
 		return this.answer;
@@ -24,6 +29,8 @@ public class OpenAnswer extends Answer{
 	
 	public void setOpenAnswer(String answer)
 	{
+		Assert.notNull(answer);
+		assert !answer.isEmpty();
 		this.answer = answer;
 	}
 	

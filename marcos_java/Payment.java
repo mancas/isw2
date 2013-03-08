@@ -21,8 +21,6 @@ public class Payment extends DomainEntity{
 	public Payment()
 	{
 		super();
-		this.method = "payment method";
-		this.amount = new Money();
 	}
 	
 	// getters

@@ -6,6 +6,9 @@ import java.util.Date;
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
@@ -13,21 +16,18 @@ import javax.validation.constraints.Past;
 import org.springframework.util.Assert;
 
 
-@Entity
+
 @Access(AccessType.PROPERTY)
 public class Registration extends DomainEntity{
 	
 	private Date moment;
-	
-	private ExamPaper exam_paper;
+	private ExamPaper examPaper;
 	private Payment payment;
 	
 	public Registration()
 	{
 		super();
 		this.moment = Calendar.getInstance().getTime();
-		this.exam_paper = new ExamPaper();
-		this.payment = new Payment();
 	}
 	
 	// getters
@@ -41,7 +41,7 @@ public class Registration extends DomainEntity{
 	
 	@Valid
 	public ExamPaper getExamPaper(){
-		return this.exam_paper;
+		return this.examPaper;
 	}
 	
 	@Valid
@@ -58,10 +58,10 @@ public class Registration extends DomainEntity{
 		this.moment = moment;
 	}
 	
-	public void setExamPaper(ExamPaper exam_paper)
+	public void setExamPaper(ExamPaper examPaper)
 	{
-		Assert.notNull(exam_paper);
-		this.exam_paper = exam_paper;
+		Assert.notNull(examPaper);
+		this.examPaper = examPaper;
 	}
 	
 	public void setPayment(Payment payment)

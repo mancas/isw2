@@ -14,7 +14,7 @@ import org.springframework.util.Assert;
 @Access(AccessType.PROPERTY)
 public class TestAnswer extends Answer{
 	
-	private List<Integer> selected;
+	private ArrayList<Integer> selected;
 	
 	public TestAnswer()
 	{
@@ -24,7 +24,7 @@ public class TestAnswer extends Answer{
 	
 	// getters
 	
-	public List<Integer> getSelected()
+	public ArrayList<Integer> getSelected()
 	{
 		return this.selected;
 	}
@@ -32,7 +32,7 @@ public class TestAnswer extends Answer{
 	// setters
 	
 	// TODO: implement restriction TestAnswer-TestQuestion
-	public void setSelected(List<Integer> selected)
+	public void setSelected(ArrayList<Integer> selected)
 	{
 		Assert.notNull(selected);
 		this.selected = selected;
