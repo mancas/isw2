@@ -8,7 +8,6 @@ import javax.validation.Valid;
 import javax.validation.constraints.Min;
 
 import org.hibernate.validator.constraints.Range;
-import org.springframework.util.Assert;
 
 
 public class ExamPaper extends DomainEntity{
@@ -22,8 +21,6 @@ public class ExamPaper extends DomainEntity{
 	public ExamPaper()
 	{
 		super();
-		this.mark = 0.0;
-		this.score = 0;
 		this.answers = new ArrayList<Answer>();
 	}
 	
@@ -66,7 +63,6 @@ public class ExamPaper extends DomainEntity{
 	
 	public void setMark(List<Answer> answers)
 	{
-		Assert.notNull(answers);
 		this.mark = computeSum(answers);
 	}
 	
@@ -83,13 +79,11 @@ public class ExamPaper extends DomainEntity{
 	
 	public void addAnswer(Answer answer)
 	{
-		Assert.notNull(answer);
 		this.answers.add(answer);
 	}
 	
 	public void removeAnswer(Answer answer)
 	{
-		Assert.notNull(answer);
 		this.answers.remove(answer);
 	}
 	

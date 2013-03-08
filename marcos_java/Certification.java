@@ -15,6 +15,7 @@ public class Certification extends DomainEntity {
 	private String title;
 	private String description;
 	private Date extinctionDate;
+	private Double fee;
 	private Collection<Company> companies;
 	private Collection<Exam> exams;
 	
@@ -31,9 +32,16 @@ public class Certification extends DomainEntity {
 	}
 
 	public void setTitle(String title) {
-		//Assert.notNull(title);
-		assert !title.isEmpty();
 		this.title = title;
+	}
+	
+	@Min(0)
+	public Double getFee() {
+		return fee;
+	}
+
+	public void setFee(Double fee) {
+		this.fee = fee;
 	}
 
 	@NotBlank
@@ -42,9 +50,6 @@ public class Certification extends DomainEntity {
 	}
 
 	public void setDescription(String description) {
-		//Assert.notNull(description);
-		assert !description.isEmpty();
-		this.description = description;
 	}
 
 	public Date getExtinctionDate() {
@@ -65,21 +70,18 @@ public class Certification extends DomainEntity {
 	}
 
 	public void setCompanies(HashSet<Company> companies) {
-		//Assert.notNull(companies);
 		assert !companies.isEmpty();
 		this.companies = companies;
 	}
 	
 	public void addCompany(Company company)
 	{
-		//Assert.notNull(company);
 		this.companies.add(company);
 		company.addCertification(this);
 	}
 	
 	public void removeCompany(Company company)
 	{
-		//Assert.notNull(company);
 		this.companies.remove(company);
 		company.removeCertification(this);
 	}
@@ -89,21 +91,18 @@ public class Certification extends DomainEntity {
 	}
 
 	public void setExams(Collection<Exam> exams) {
-		//Assert.notNull(exams);
 		assert !exams.isEmpty();
 		this.exams = exams;
 	}
 	
 	public void addExam(Exam exam)
 	{
-		//Assert.notNull(exam);
 		this.exams.add(exam);
 		exam.setCertifications(this);
 	}
 	
 	public void removeExam(Exam exam)
 	{
-		//Assert.notNull(exam);
 		this.exams.remove(exam);
 		exam.setCertifications(null);
 	}

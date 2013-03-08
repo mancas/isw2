@@ -4,8 +4,6 @@ import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
-import org.springframework.util.Assert;
-
 import security.UserAccount;
 
 @SuppressWarnings("serial")
@@ -27,7 +25,6 @@ public abstract class Actor extends UserAccount {
 	}
 
 	public void setName(String name) {
-		Assert.notNull(name);
 		this.name = name;
 	}
 
@@ -37,7 +34,6 @@ public abstract class Actor extends UserAccount {
 	}
 
 	public void setPhone(Integer phone) {
-		Assert.notNull(phone);
 		this.phone = phone;
 	}
 
@@ -47,7 +43,6 @@ public abstract class Actor extends UserAccount {
 	}
 
 	public void setEmail(String email) {
-		Assert.notNull(email);
 		this.email = email;
 	}
 
@@ -57,7 +52,6 @@ public abstract class Actor extends UserAccount {
 	}
 
 	public void setAddress(String address) {
-		Assert.notNull(address);
 		this.address = address;
 	}
 	

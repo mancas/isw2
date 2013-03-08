@@ -6,19 +6,20 @@ import javax.validation.constraints.NotNull;
 
 
 import org.hibernate.validator.constraints.NotBlank;
-import org.springframework.util.Assert;
+import org.hibernate.validator.constraints.NotEmpty;
 
 public class Payment extends DomainEntity{
 
 	private String method;
 	private Money amount;
+	private Registration register;
 	
 	
 	public Payment()
 	{
 		super();
-		this.method = "payment method";
 		this.amount = new Money();
+		this.register = new Registration();
 	}
 	
 	// getters
@@ -37,21 +38,37 @@ public class Payment extends DomainEntity{
 		return this.amount;
 	}
 	
+	@NotEmpty
+	public Registration getRegister()
+	{
+		return this.register;
+	}
+	
 	// setters
 	
 	public void setMethod(String method)
 	{
-		Assert.notNull(method);
 		this.method = method;
 	}
 	
-	/*TODO: implement restriction Payment-Certification
-	 * 
-	 * AMOUNT must be equal to FEE in certification.
-	 */
+	public void setRegister(Registration register)
+	{
+		if (register != null) {
+			this.register = register;
+			register.setPayment(this);
+		} else { 
+			throw new IllegalArgumentException("Registration cannot be null");
+		}
+	}
+	
 	public void setAmount(Money amount)
 	{
-		Assert.notNull(amount);
-		this.amount = amount;
+		Double certifiationFee = this.register.getAnnouncement().getExam().getCertification().getFee();
+		
+		if (amount.getAmount() != certifiationFee) {
+			throw new IllegalArgumentException("Payment amount must be the same as Certification amount");
+		} else {
+			this.amount = amount;
+		}
 	}
 }

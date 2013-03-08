@@ -1,10 +1,7 @@
 package domain;
 
 import java.util.ArrayList;
-
-
 import org.hibernate.validator.constraints.NotEmpty;
-import org.springframework.util.Assert;
 
 public class TestQuestion extends Question {
 
@@ -25,7 +22,6 @@ public class TestQuestion extends Question {
 	}
 
 	public void setAnswers(ArrayList<String> answers) {
-		Assert.notEmpty(answers);
 		this.answers = answers;
 	}
 
@@ -37,7 +33,6 @@ public class TestQuestion extends Question {
 	public void setCorrects(ArrayList<Integer> corrects) {
 
 		Integer maxIndex = this.corrects.size() - 1;
-		Assert.notEmpty(corrects);
 
 		for (int i = 0; i < corrects.size(); i++) {
 			if (corrects.get(i) > maxIndex) {

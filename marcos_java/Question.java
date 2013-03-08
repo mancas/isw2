@@ -5,7 +5,6 @@ import java.util.HashSet;
 import javax.validation.constraints.Min;
 
 import org.hibernate.validator.constraints.NotBlank;
-import org.springframework.util.Assert;
 
 
 public abstract class Question extends DomainEntity {
@@ -26,8 +25,6 @@ public abstract class Question extends DomainEntity {
 	}
 	
 	public void setExams(HashSet<Exam> exams) {
-		assert !exams.isEmpty();
-		Assert.notNull(exams);
 		this.exams = exams;
 	}
 
@@ -38,7 +35,6 @@ public abstract class Question extends DomainEntity {
 
 
 	public void setNumber(Integer number) {
-		Assert.notNull(number);
 		this.number = number;
 	}
 
@@ -48,7 +44,6 @@ public abstract class Question extends DomainEntity {
 	}
 
 	public void setStatement(String statement) {
-		Assert.notNull(statement);
 		this.statement = statement;
 	}
 
@@ -58,20 +53,17 @@ public abstract class Question extends DomainEntity {
 	}
 
 	public void setMaximunMark(Double maximunMark) {
-		Assert.notNull(maximunMark);
 		this.maximunMark = maximunMark;
 	}
 	
 	public void addExam(Exam exam)
 	{
-		Assert.notNull(exam);
 		this.exams.add(exam);
 		exam.addQuestion(this);
 	}
 	
 	public void removeExam(Exam exam)
 	{
-		Assert.notNull(exam);
 		this.exams.remove(exam);
 		exam.removeQuestion(this);
 	}

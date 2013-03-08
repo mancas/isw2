@@ -10,7 +10,6 @@
 
 package domain;
 
-/*
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Entity;
@@ -20,13 +19,10 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Version;
-*/
 
-/*
 @Entity
 @Access(AccessType.PROPERTY)
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-*/
 public abstract class DomainEntity {
 
 	// Constructors -----------------------------------------------------------
@@ -40,8 +36,8 @@ public abstract class DomainEntity {
 	private int id;
 	private int version;
 
-	//@Id
-	//@GeneratedValue(strategy = GenerationType.TABLE)
+	@Id
+	@GeneratedValue(strategy = GenerationType.TABLE)
 	public int getId() {
 		return id;
 	}
@@ -50,7 +46,7 @@ public abstract class DomainEntity {
 		this.id = id;
 	}
 
-	//@Version
+	@Version
 	public int getVersion() {
 		return version;
 	}

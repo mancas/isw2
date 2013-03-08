@@ -6,7 +6,6 @@ import java.util.HashSet;
 import javax.validation.constraints.Min;
 
 import org.hibernate.validator.constraints.NotEmpty;
-import org.springframework.util.Assert;
 
 
 public class Company extends DomainEntity {
@@ -27,7 +26,6 @@ public class Company extends DomainEntity {
 	}
 
 	public void setName(String name) {
-		//Assert.notNull(name);
 		assert !name.isEmpty();
 		this.name = name;
 	}
@@ -38,21 +36,17 @@ public class Company extends DomainEntity {
 	}
 
 	public void setCertifications(Collection<Certification> certifications) {
-		//Assert.notEmpty(certifications);
-
 		this.certifications = certifications;
 	}
 
 	public void addCertification(Certification certification)
 	{
-		//Assert.notNull(certification);
 		this.certifications.add(certification);
 		certification.addCompany(this);
 	}
 	
 	public void removeCertification(Certification certification)
 	{
-		//Assert.notNull(certification);
 		this.certifications.remove(certification);
 		certification.removeCompany(this);
 	}

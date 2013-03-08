@@ -9,7 +9,6 @@ import javax.validation.constraints.Future;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.NotBlank;
-import org.springframework.util.Assert;
 
 
 public class Announcement extends DomainEntity
@@ -74,40 +73,33 @@ public class Announcement extends DomainEntity
 	
 	public void setTitle(String title)
 	{
-		Assert.notNull(title);
 		this.title = title;
 	}
 	
 	public void setDescription(String description)
 	{
-		Assert.notNull(description);
 		this.title = description;
 	}
 	
 	public void setMoment(Date moment)
 	{
-		Assert.notNull(moment);
 		this.moment = moment;
 	}
 	
 	public void setExam(Exam exam)
 	{
-		Assert.notNull(exam);
 		this.exam = exam;
 	}
 
 	public void addRegistration(Registration registration)
 	{
-		Assert.notNull(registration);
 		this.registrations.add(registration);
 		registration.addAnnouncement(this);
 	}
 	
 	public void removeRegistration(Registration registration)
 	{
-		Assert.notNull(registration);
 		this.registrations.remove(registration);
-		registration.removeAnnouncement(this);
 	}
 	
 }

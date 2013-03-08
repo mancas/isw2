@@ -2,8 +2,6 @@ package domain;
 
 import java.util.ArrayList;
 import java.util.List;
-import org.springframework.util.Assert;
-
 
 public class TestAnswer extends Answer{
 	
@@ -27,7 +25,6 @@ public class TestAnswer extends Answer{
 	// TODO: implement restriction TestAnswer-TestQuestion
 	public void setSelected(List<Integer> selected)
 	{
-		Assert.notNull(selected);
 		this.selected = selected;
 	}
 

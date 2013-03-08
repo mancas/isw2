@@ -8,7 +8,6 @@ import javax.validation.constraints.Min;
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.hibernate.validator.constraints.Range;
-import org.springframework.util.Assert;
 
 
 public class Exam extends DomainEntity {
@@ -32,7 +31,6 @@ public class Exam extends DomainEntity {
 	}
 
 	public void setTitle(String title) {
-		Assert.notNull(title);
 		this.title = title;
 	}
 
@@ -42,7 +40,6 @@ public class Exam extends DomainEntity {
 	}
 
 	public void setMinimumMark(Double minimumMark) {
-		Assert.notNull(minimumMark);
 		this.minimumMark = minimumMark;
 	}
 
@@ -52,7 +49,6 @@ public class Exam extends DomainEntity {
 	}
 
 	public void setMinimumScore(Integer minimumScore) {
-		Assert.notNull(minimumScore);
 		this.minimumScore = minimumScore;
 	}
 
@@ -62,7 +58,6 @@ public class Exam extends DomainEntity {
 	}
 
 	public void setQuestions(HashSet<Question> questions) {
-		Assert.notEmpty(questions);
 		assert questions != null;
 
 		this.questions = questions;
@@ -70,14 +65,12 @@ public class Exam extends DomainEntity {
 	
 	public void addQuestion(Question question)
 	{
-		Assert.notNull(question);
 		this.questions.add(question);
 		question.addExam(this);
 	}
 	
 	public void removeQuestion(Question question)
 	{
-		Assert.notNull(question);
 		this.questions.remove(question);
 		question.removeExam(this);
 	}

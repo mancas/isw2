@@ -1,30 +1,25 @@
 package domain;
 
-
-
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
-import org.springframework.util.Assert;
 
 
 public class Answer extends DomainEntity{
 
-	private int number;
+	private Integer number;
 	private Double mark;
 	
 	public Answer()
 	{
 		super();
-		this.number = 0;
-		this.mark = 0.0;
 	}
 	
 	// getters
 	
 	@Min(0)
 	@NotNull
-	public int getNumber()
+	public Integer getNumber()
 	{
 		return this.number;
 	}
@@ -37,15 +32,13 @@ public class Answer extends DomainEntity{
 	
 	// setters
 	
-	public void setNumber(int number)
+	public void setNumber(Integer number)
 	{
-		Assert.notNull(number);
 		this.number = number;
 	}
 	
 	public void setMark(Double mark)
 	{
-		Assert.notNull(mark);
 		this.mark = mark;
 	}
 	
