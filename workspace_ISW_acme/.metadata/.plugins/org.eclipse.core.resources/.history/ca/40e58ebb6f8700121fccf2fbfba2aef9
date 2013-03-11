@@ -1,0 +1,16 @@
+package entities;
+
+import security.UserAccount;
+
+public abstract class Actor extends UserAccount {
+	
+	private String name;
+	private Integer phone;
+	private String email;
+	private String address;
+
+	public Actor()
+	{
+		super();
+	}
+}

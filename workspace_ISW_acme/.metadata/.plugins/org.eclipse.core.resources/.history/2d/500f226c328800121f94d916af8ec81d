@@ -1,0 +1,19 @@
+package domain;
+
+
+@SuppressWarnings("serial")
+public class Customer extends Actor {
+	
+	private Registration register;
+	
+	public Customer()
+	{
+		super();
+		this.register = new Registration();
+	}
+
+	public Registration getRegister()
+	{
+		return this.register;
+	}
+}

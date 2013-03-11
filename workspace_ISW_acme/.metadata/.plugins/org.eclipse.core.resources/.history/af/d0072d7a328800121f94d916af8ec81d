@@ -1,0 +1,21 @@
+package domain;
+
+
+@SuppressWarnings("serial")
+public class Customer extends Actor {
+	
+	private Collection<Registration> registers;
+	
+	public Customer()
+	{
+		super();
+		this.register = new HashSet<Registration>();
+	}
+
+	public Registration getRegister()
+	{
+		return this.register;
+	}
+	
+	public setRegisters
+}

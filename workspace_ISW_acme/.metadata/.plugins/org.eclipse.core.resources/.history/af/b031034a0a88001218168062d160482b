@@ -1,0 +1,124 @@
+package domain;
+
+import java.util.Collection;
+import java.util.HashSet;
+
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.validation.constraints.Min;
+
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.Range;
+import org.springframework.util.Assert;
+
+
+@Entity
+@Access(AccessType.PROPERTY)
+public class Exam extends DomainEntity {
+	
+	private String title;
+	private Double minimumMark;
+	private Integer minimumScore;
+	@OneToMany
+	@JoinTable(name="Question")
+	private Collection<Question> questions;
+	@ManyToOne
+	@JoinColumn(name="Certification")
+	private Certification certifications;
+
+	public Exam()
+	{
+		super();
+
+		this.questions = new HashSet<Question>();
+	}
+
+	@NotBlank
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		Assert.notNull(title);
+		this.title = title;
+	}
+
+	@Min(0)
+	public Double getMinimumMark() {
+		return minimumMark;
+	}
+
+	public void setMinimumMark(Double minimumMark) {
+		Assert.notNull(minimumMark);
+		this.minimumMark = minimumMark;
+	}
+
+	@Range(min=0, max=99)
+	public Integer getMinimumScore() {
+		return minimumScore;
+	}
+
+	public void setMinimumScore(Integer minimumScore) {
+		Assert.notNull(minimumScore);
+		this.minimumScore = minimumScore;
+	}
+
+	@NotEmpty
+	public Collection<Question> getQuestions() {
+		return questions;
+	}
+
+	public void setQuestions(HashSet<Question> questions) {
+		Assert.notEmpty(questions);
+		assert questions != null;
+
+		this.questions = questions;
+	}
+	
+	public void addQuestion(Question question)
+	{
+		Assert.notNull(question);
+		this.questions.add(question);
+		question.addExam(this);
+	}
+	
+	public void removeQuestion(Question question)
+	{
+		Assert.notNull(question);
+		this.questions.remove(question);
+		question.removeExam(this);
+	}
+	
+	public Certification getCertification() {
+		return certification;
+	}
+
+	public void setCertifications(HashSet<Certification> certifications) {
+		Assert.notEmpty(certifications);
+		assert certifications != null;
+
+		this.certifications = certifications;
+	}
+	
+	public void addCertification(Certification certification)
+	{
+		Assert.notNull(certification);
+		this.certifications.add(certification);
+		certification.addExam(this);
+	}
+	
+	public void removeCertification(Certification certification)
+	{
+		Assert.notNull(certification);
+		this.certifications.remove(certification);
+		certification.removeExam(this);
+	}
+
+}

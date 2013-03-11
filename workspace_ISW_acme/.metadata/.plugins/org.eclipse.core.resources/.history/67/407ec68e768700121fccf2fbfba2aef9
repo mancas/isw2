@@ -1,0 +1,22 @@
+package entities;
+
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.Entity;
+
+import domain.DomainEntity;
+
+@Entity
+@Access(AccessType.PROPERTY)
+public abstract class Question extends DomainEntity {
+	
+	private Integer number;
+	private String statement;
+	private Double maximunMark;
+	
+	public Question()
+	{
+		super();
+	}
+
+}

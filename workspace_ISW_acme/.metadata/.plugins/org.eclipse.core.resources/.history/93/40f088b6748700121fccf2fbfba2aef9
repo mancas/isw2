@@ -1,0 +1,11 @@
+package entities;
+
+@Entity
+public class Administrator extends Actor {
+	
+	public Administrator()
+	{
+		super();
+	}
+
+}

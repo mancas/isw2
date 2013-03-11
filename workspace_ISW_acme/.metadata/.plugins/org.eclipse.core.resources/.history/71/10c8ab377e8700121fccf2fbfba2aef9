@@ -1,0 +1,49 @@
+package entities;
+
+import java.util.HashSet;
+
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.Entity;
+
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.util.Assert;
+
+import domain.DomainEntity;
+
+@Entity
+@Access(AccessType.PROPERTY)
+public class Company extends DomainEntity {
+
+	private String name;
+	private HashSet<Certification> certifications;
+	
+	public Company()
+	{
+		super();
+		
+		this.certifications = new HashSet<Certification>();
+	}
+
+	@NotEmpty
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		Assert.notNull(name);
+		assert !name.isEmpty();
+		this.name = name;
+	}
+
+	public HashSet<Certification> getCertifications() {
+		return certifications;
+	}
+
+	public void setCertifications(HashSet<Certification> certifications) {
+		Assert.notEmpty(certifications)M;
+		this.certifications = certifications;
+	}
+
+	
+}

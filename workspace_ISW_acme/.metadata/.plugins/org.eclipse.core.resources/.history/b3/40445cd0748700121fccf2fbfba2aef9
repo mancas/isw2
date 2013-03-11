@@ -1,0 +1,14 @@
+package entities;
+
+import javax.persistence.Entity;
+
+@SuppressWarnings("serial")
+@Entity
+public class Administrator extends Actor {
+	
+	public Administrator()
+	{
+		super();
+	}
+
+}

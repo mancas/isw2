@@ -1,0 +1,293 @@
+package utilities;
+
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+
+import security.Authority;
+import domain.*;
+
+public class Populate {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+
+		//Custumer's
+		Customer customer1 = new Customer();
+		Customer customer2 = new Customer();
+		
+		//Customer 1
+		customer1.setName("Pepito Grillo");
+		customer1.setPhone(954672673);
+		customer1.setEmail("test@alum.es");
+		customer1.setAddress("Calle la calabaza número 1");
+		customer1.setUsername("pepitogrillo");
+		customer1.setPassword("ACME-P3p1t0-G1LL0");
+		ArrayList<Authority> authorities = new ArrayList<Authority>();
+		Authority c1 = new Authority();
+		c1.setAuthority("CUSTOMER");
+		authorities.add(c1);
+		customer1.setAuthorities(authorities);
+		
+		printCustomer(customer1);
+	
+		//Customer 2
+		customer2.setName("Jimmy Cricket");
+		customer2.setPhone(954672673);
+		customer2.setEmail("testing@alum.es");
+		customer2.setAddress("Without number 1");
+		customer2.setUsername("jimmycricket");
+		customer2.setPassword("ACME-J1/mY-G1LL0");
+		ArrayList<Authority> authorities2 = new ArrayList<Authority>();
+		Authority c2 = new Authority();
+		c2.setAuthority("CUSTOMER");
+		authorities2.add(c2);
+		customer2.setAuthorities(authorities2);
+		
+		printCustomer(customer2);
+		
+		//Reviewer's
+		Reviewer reviewer1 = new Reviewer();
+		Reviewer reviewer2 = new Reviewer();
+		
+		//Reviewer 1
+		reviewer1.setName("Reviewer 1");
+		reviewer1.setPhone(954852741);
+		reviewer1.setEmail("test@alum.es");
+		reviewer1.setAddress("Desengaño 21");
+		reviewer1.setUsername("reviewer3681");
+		reviewer1.setPassword("ACME-R3V1W3R-G1LL0");
+		ArrayList<Authority> authorities3 = new ArrayList<Authority>();
+		Authority r1 = new Authority();
+		r1.setAuthority("REVIEWER");
+		authorities3.add(r1);
+		reviewer1.setAuthorities(authorities3);
+		
+		printCustomer(reviewer1);
+		
+		//Reviewer 2
+		reviewer2.setName("Reviewer 2");
+		reviewer2.setPhone(954852741);
+		reviewer2.setEmail("test@alum.es");
+		reviewer2.setAddress("Desengaño 31");
+		reviewer2.setUsername("reviewer001");
+		reviewer2.setPassword("ACME-R3V1W3R-P3p3");
+		ArrayList<Authority> authorities4 = new ArrayList<Authority>();
+		Authority r2 = new Authority();
+		r2.setAuthority("REVIEWER");
+		authorities4.add(r2);
+		reviewer2.setAuthorities(authorities4);
+		
+		printCustomer(reviewer2);
+		
+		//Administrator's
+		Administrator administrator1 = new Administrator();
+		Administrator administrator2 = new Administrator();
+		
+		//Reviewer 1
+		administrator1.setName("Administrator 1");
+		administrator1.setPhone(954852741);
+		administrator1.setEmail("test@alum.es");
+		administrator1.setAddress("Barbacoa 21");
+		administrator1.setUsername("Administrator3681");
+		administrator1.setPassword("ACME-@dm1N/B0$$-G1LL0");
+		ArrayList<Authority> authorities5 = new ArrayList<Authority>();
+		Authority a1 = new Authority();
+		a1.setAuthority("ADMIN");
+		authorities5.add(a1);
+		administrator1.setAuthorities(authorities5);
+		
+		printCustomer(administrator1);
+		
+		//Reviewer 2
+		administrator2.setName("Administrator 2");
+		administrator2.setPhone(954852741);
+		administrator2.setEmail("test@alum.es");
+		administrator2.setAddress("EL Ungulado sin pezuñas 31");
+		administrator2.setUsername("AdministratorSupremo");
+		administrator2.setPassword("ACME-R3V1W3R-@dm1N/B0$$");
+		ArrayList<Authority> authorities6 = new ArrayList<Authority>();
+		Authority a2 = new Authority();
+		a2.setAuthority("ADMIN");
+		authorities6.add(a2);
+		administrator2.setAuthorities(authorities6);
+		
+		printCustomer(administrator2);
+		
+		//Companies
+		Company company1 = new Company();
+		Company company2 = new Company();
+		
+		//Company1
+		company1.setName("Microsoft");
+		
+		//Company2
+		company2.setName("Hipercor");
+		
+		//Certification's
+		Certification certification1 = new Certification();
+		Certification certification2 = new Certification();
+		
+		//Certification1
+		certification1.setTitle("Ingles =)");
+		certification1.setDescription("First Certificated");
+		certification1.setFee(245.67);
+		certification1.addCompany(company2);
+		
+		//Certification2
+		certification2.setTitle("Aleman =)");
+		certification2.setDescription("Aleman B1");
+		certification2.setFee(24.70);
+		certification2.addCompany(company1);
+		
+		printCompany(company1);
+		printCompany(company2);
+	
+		//Announcement's
+		Announcement an1 = new Announcement();
+		Announcement an2 = new Announcement();
+		Date moment = Calendar.getInstance().getTime();
+		
+		//Announcement1
+		an1.setTitle("English Exam");
+		an1.setDescription("The exam will be a good practise for your future");
+		an1.setMoment(moment);
+		
+		//Announcement1
+		an2.setTitle("Deutsch Exam");
+		an2.setDescription("The exam will be a good practise for your future");
+		an2.setMoment(moment);
+		
+		//Exam's
+		Exam ex1 = new Exam();
+		Exam ex2 = new Exam();
+		
+		//Exam1
+		ex1.setCertifications(certification1);
+		ex1.setMinimumMark(5.0);
+		ex1.setMinimumScore(50);
+		ex1.setTitle("Exam 1");
+		
+		//Exam2
+		ex2.setCertifications(certification2);
+		ex2.setMinimumMark(6.0);
+		ex2.setMinimumScore(70);
+		ex2.setTitle("Exam 2");
+		
+		an1.setExam(ex1);
+		an2.setExam(ex2);
+		
+		//Questions
+		OpenQuestion q1 = new OpenQuestion();
+		TestQuestion q2 = new TestQuestion();
+		
+		//Question1
+		q1.addExam(ex1);
+		q1.setNumber(1);
+		q1.setMaximunMark(5.0);
+		q1.setStatement("Explain yourself");
+		
+		//Question2
+		q2.addExam(ex2);
+		q2.setStatement("How do you feel?");
+		q2.setMaximunMark(5.0);
+		ArrayList<String> answers = new ArrayList<String>();
+		answers.add("Bad");
+		answers.add("Good");
+		q2.setAnswers(answers);
+		ArrayList<Integer> corrects = new ArrayList<Integer>();
+		corrects.add(0);
+		q2.setCorrects(corrects);
+		
+		printExam(ex1);
+		printExam(ex2);
+		printAnnouncement(an1);
+		printAnnouncement(an2);
+		
+		//Payments
+		Payment pay1 = new Payment();
+		Payment pay2 = new Payment();
+		Money m1 = new Money();
+		m1.setAmount(245.67);
+		m1.setCurrency("Pounds");
+		
+		Money m2 = new Money();
+		m1.setAmount(24.70);
+		m1.setCurrency("Euros");
+		
+		
+		//Registration's
+		Registration register1 = new Registration();
+		Registration register2 = new Registration();
+		register1.setPayment(pay1);
+		register2.setPayment(pay2);
+		register1.addAnnouncement(an1);
+		register2.addAnnouncement(an2);
+		
+		//Pay1
+		pay1.setAmount(m1);
+		pay1.setMethod("Paypal");
+		
+		//Pay2
+		pay2.setAmount(m2);
+		pay2.setMethod("Credit Card");
+
+		//Register1
+		register1.setMoment(moment);
+		register1.setCustomer(customer1);
+		
+		//Register2
+		register2.setCustomer(customer2);
+		register2.setMoment(moment);
+	}
+	
+	public static void printCustomer(Actor actor)
+	{
+		System.out.println("/****************ACTOR****************/");
+		System.out.println("Name: " + actor.getName());
+		System.out.println("Phone: " + actor.getPhone());
+		System.out.println("Email: " + actor.getEmail());
+		System.out.println("Address: " + actor.getAddress());
+		System.out.println("Username: " + actor.getUsername());
+		System.out.println("Password: " + actor.getPassword());
+		
+		System.out.println();
+	}
+	
+	public static void printCompany(Company company)
+	{
+		System.out.println("/****************COMPANY****************/");
+		System.out.println("Name: " + company.getName());
+		System.out.println("Certifications: " + company.getCertifications().size());
+		for (Certification c : company.getCertifications()) {
+			System.out.println("Certification--> " + c.getTitle());
+		}
+		System.out.println();
+	}
+	
+	public static void printExam(Exam exam)
+	{
+		System.out.println("/****************EXAM****************/");
+		System.out.println("Name: " + exam.getTitle());
+		System.out.println("Certification: " + exam.getCertification().getTitle());
+		System.out.println("Minimun Score " + exam.getMinimumScore());
+		System.out.println("Minimun Mark " + exam.getMinimumMark());
+		for (Question question: exam.getQuestions()) {
+			System.out.println("Question --> " + question.getStatement());
+		}
+		System.out.println();
+	}
+	
+	public static void printAnnouncement(Announcement an)
+	{
+		System.out.println("/****************ANNOUNCEMENT****************/");
+		System.out.println("Title: " + an.getTitle());
+		System.out.println("Description: " + an.getDescription());
+		System.out.println("Moment " + an.getMoment());
+		System.out.println("Exam title: " + an.getExam().getTitle());
+		System.out.println();
+	}
+	
+}

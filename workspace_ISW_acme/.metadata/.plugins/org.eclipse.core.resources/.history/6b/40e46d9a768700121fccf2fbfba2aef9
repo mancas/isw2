@@ -1,0 +1,48 @@
+package entities;
+
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.Entity;
+import javax.validation.constraints.Min;
+
+import domain.DomainEntity;
+
+@Entity
+@Access(AccessType.PROPERTY)
+public abstract class Question extends DomainEntity {
+	
+	private Integer number;
+	private String statement;
+	private Double maximunMark;
+	
+	public Question()
+	{
+		super();
+	}
+
+	@Min(1)
+	public Integer getNumber() {
+		return number;
+	}
+
+	public void setNumber(Integer number) {
+		this.number = number;
+	}
+
+	public String getStatement() {
+		return statement;
+	}
+
+	public void setStatement(String statement) {
+		this.statement = statement;
+	}
+
+	public Double getMaximunMark() {
+		return maximunMark;
+	}
+
+	public void setMaximunMark(Double maximunMark) {
+		this.maximunMark = maximunMark;
+	}
+
+}

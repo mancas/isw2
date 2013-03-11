@@ -1,0 +1,22 @@
+package entities;
+
+import java.util.ArrayList;
+
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+import javax.persistence.Entity;
+
+@Entity
+@Access(AccessType.PROPERTY)
+public class TestQuestion extends Question {
+
+	private ArrayList<String> answers;
+	private ArrayList<Integer> corrects;
+	
+	public TestQuestion()
+	{
+		super();
+		this.answers = new ArrayList<String>();
+	}
+	
+}

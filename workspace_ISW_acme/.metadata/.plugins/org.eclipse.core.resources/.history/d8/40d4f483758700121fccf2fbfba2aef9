@@ -1,0 +1,13 @@
+package entities;
+
+import javax.persistence.Entity;
+
+@Entity
+public class Reviewer extends Actor {
+	
+	public Reviewer()
+	{
+		super();
+	}
+
+}

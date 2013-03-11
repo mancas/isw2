@@ -1,0 +1,15 @@
+package entities;
+
+import javax.persistence.Access;
+import javax.persistence.AccessType;
+
+@Entity
+@Access(AccessType.PROPERTY)
+public class OpenQuestion extends Question {
+	
+	public OpenQuestion()
+	{
+		super();
+	}
+
+}

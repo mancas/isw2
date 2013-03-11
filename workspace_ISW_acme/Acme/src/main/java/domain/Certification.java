@@ -1,0 +1,115 @@
+package domain;
+
+import java.util.Calendar;
+import java.util.Collection;
+import java.util.Date;
+import java.util.HashSet;
+
+import javax.validation.constraints.Min;
+
+import org.hibernate.validator.constraints.NotBlank;
+
+
+public class Certification extends DomainEntity {
+
+	private String title;
+	private String description;
+	private Date extinctionDate;
+	private Double fee;
+	private Collection<Company> companies;
+	private Collection<Exam> exams;
+	
+	public Certification()
+	{
+		super();
+		this.companies = new HashSet<Company>();
+		this.exams = new HashSet<Exam>();
+	}
+
+	@NotBlank
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	
+	@Min(0)
+	public Double getFee() {
+		return fee;
+	}
+
+	public void setFee(Double fee) {
+		this.fee = fee;
+	}
+
+	@NotBlank
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+	}
+
+	public Date getExtinctionDate() {
+		return extinctionDate;
+	}
+
+	public void setExtinctionDate(Date extinctionDate) {
+		Date now = Calendar.getInstance().getTime();
+		if (now.compareTo(extinctionDate) > 0) {
+			throw new IllegalArgumentException("Certification Extinction Date must be an instance of future");
+		}
+		this.extinctionDate = extinctionDate;
+	}
+
+	@Min(1)
+	public Collection<Company> getCompanies() {
+		return companies;
+	}
+
+	public void setCompanies(HashSet<Company> companies) {
+		assert !companies.isEmpty();
+		this.companies = companies;
+	}
+	
+	public void addCompany(Company company)
+	{
+		this.companies.add(company);
+		if (!company.getCertifications().contains(this)) {
+			company.addCertification(this);
+		}
+	}
+	
+	public void removeCompany(Company company)
+	{
+		this.companies.remove(company);
+		if (company.getCertifications().contains(this)) {
+			company.removeCertification(this);
+		}
+	}
+	
+	public Collection<Exam> getExams() {
+		return exams;
+	}
+
+	public void setExams(Collection<Exam> exams) {
+		assert !exams.isEmpty();
+		this.exams = exams;
+	}
+	
+	public void addExam(Exam exam)
+	{
+		this.exams.add(exam);
+		if (exam.getCertification() != this) {
+			exam.setCertification(this);
+		}
+	}
+	
+	public void removeExam(Exam exam)
+	{
+		this.exams.remove(exam);
+		exam.setCertification(null);
+	}
+}

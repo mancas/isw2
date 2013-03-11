@@ -1,0 +1,6 @@
+INDEX VERSION 1.122+C:\Users\Manu\Documents\workspace_ISW_acme\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+3826347775.index
+3211426737.index
+2186186947.index
+3211993035.index
+224620085.index

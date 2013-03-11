@@ -1,0 +1,73 @@
+package domain;
+
+import java.util.HashSet;
+
+import javax.validation.constraints.Min;
+
+import org.hibernate.validator.constraints.NotBlank;
+
+
+public abstract class Question extends DomainEntity {
+	
+	private Integer number;
+	private String statement;
+	private Double maximunMark;
+	private HashSet<Exam> exams;
+	
+	public Question()
+	{
+		super();
+		this.exams = new HashSet<Exam>();
+	}
+
+	public HashSet<Exam> getExams() {
+		return exams;
+	}
+	
+	public void setExams(HashSet<Exam> exams) {
+		this.exams = exams;
+	}
+
+	@Min(1)
+	public Integer getNumber() {
+		return number;
+	}
+
+
+	public void setNumber(Integer number) {
+		this.number = number;
+	}
+
+	@NotBlank
+	public String getStatement() {
+		return statement;
+	}
+
+	public void setStatement(String statement) {
+		this.statement = statement;
+	}
+
+	@Min(0)
+	public Double getMaximunMark() {
+		return maximunMark;
+	}
+
+	public void setMaximunMark(Double maximunMark) {
+		this.maximunMark = maximunMark;
+	}
+	
+	public void addExam(Exam exam)
+	{
+		this.exams.add(exam);
+		if (!exam.getQuestions().contains(this)) {
+			exam.addQuestion(this);
+		}
+	}
+	
+	public void removeExam(Exam exam)
+	{
+		this.exams.remove(exam);
+		exam.removeQuestion(this);
+	}
+
+}
