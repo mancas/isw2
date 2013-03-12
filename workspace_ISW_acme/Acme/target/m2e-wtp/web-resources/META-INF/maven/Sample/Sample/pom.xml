@@ -17,16 +17,16 @@
 
 	<!-- Artifact identification -->
 
-	<groupId>Sample</groupId>
-	<artifactId>Sample</artifactId>
+	<groupId>Acme</groupId>
+	<artifactId>Acme</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
 	<!-- Indexing information -->
 
-	<name>Sample</name>
+	<name>Acme</name>
 	<url>http://www.example.com</url>
-	<description>This is a sample template project</description>
+	<description>This is the Acme project</description>
 
 	<!-- Build commands -->
 
