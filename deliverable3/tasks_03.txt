@@ -1,0 +1,47 @@
+			-INDIVIDUAL-
+S01 - THEORY
+
+	Task 1. report
+	Task 2. create databases for workspace
+
+S02 - PROBLEMS (persistence models)
+
+	Task 1. 
+		produce Java Domain Model
+		JPA persistence model
+		PopulateDatabase config file
+		some queries
+
+			-GROUP-
+S03-04
+	Task 1.
+		JPA persistence model
+		PopulateDatabase config file
+		some queries
+	
+	Queries I
+		
+		1. Average number of registrations/customer
+		2. Average number of registrations/announcement
+		3. Average number of exams/certification
+		4. Average number of questions/exam
+		5. Select test incorrect answers
+	
+	Queries II
+		
+		1. Select number of registrations associated with 
+			a given certification
+		2. List customer names and the total amount of money
+		3. Select customer names registered for a given
+			announcement
+		4. Select customer names who can attain a given 
+			certification (affordable)
+	
+	Queries III
+		
+		1. Select certifications with the exam that requires
+			the maximum mark to be passed
+		2. Rank the certification names in DESCENDING order
+			of amount of registrations associated
+		3. Given a certification, get the exams and the number
+			of times they've been in an announcement
